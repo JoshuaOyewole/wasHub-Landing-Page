@@ -462,9 +462,9 @@
             <span class="sr-only">Fullnames</span>
             <input
               type="text"
-              name="fulnames"
+              name="fullnames"
               placeholder="Full Names"
-              autocomplete="given-name"
+              autocomplete="name"
               required
             />
           </label>
@@ -473,7 +473,7 @@
             <span class="sr-only">Phone Number</span>
             <input
               type="tel"
-              name="phone"
+              name="phoneNumber"
               placeholder="Phone Number"
               autocomplete="tel"
               required
@@ -494,12 +494,12 @@
             <legend class="sr-only">Account type</legend>
             <label>
               <span>Yes</span>
-              <input type="radio" name="accountType" value="vendor" required />
+              <input type="radio" name="isVendor" value="true" required />
               <i aria-hidden="true"></i>
             </label>
             <label>
               <span>No</span>
-              <input type="radio" name="accountType" value="user" required />
+              <input type="radio" name="isVendor" value="false" required />
               <i aria-hidden="true"></i>
             </label>
           </fieldset>

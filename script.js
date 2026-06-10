@@ -12,6 +12,7 @@ const waitlistTriggers = document.querySelectorAll(".js-waitlist-trigger");
 const waitlistCloseControls = document.querySelectorAll("[data-close-waitlist]");
 const waitlistForm = document.querySelector(".waitlist-form");
 const waitlistMessage = document.querySelector(".waitlist-message");
+const waitlistEndpoint = "https://washub-backend.vercel.app/api/waitlist";
 let lastFocusedElement = null;
 
 function setMenu(open) {
@@ -59,7 +60,7 @@ waitlistCloseControls.forEach((control) => {
   control.addEventListener("click", () => setWaitlistModal(false));
 });
 
-waitlistForm?.addEventListener("submit", (event) => {
+waitlistForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const invalidField = waitlistForm.querySelector(":invalid");
@@ -69,8 +70,38 @@ waitlistForm?.addEventListener("submit", (event) => {
     return;
   }
 
-  waitlistMessage.textContent = "Thanks, you are on the WashHub waitlist.";
-  waitlistForm.reset();
+  const formData = new FormData(waitlistForm);
+  const submitButton = waitlistForm.querySelector(".waitlist-submit");
+  const payload = {
+    email: formData.get("email").trim(),
+    fullnames: formData.get("fullnames").trim(),
+    phoneNumber: formData.get("phoneNumber").trim(),
+    isVendor: formData.get("isVendor") === "true",
+  };
+
+  waitlistMessage.textContent = "Joining the waitlist...";
+  submitButton.disabled = true;
+
+  try {
+    const response = await fetch(waitlistEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error("Waitlist request failed.");
+    }
+
+    waitlistMessage.textContent = "Thanks, you are on the WashHub waitlist.";
+    waitlistForm.reset();
+  } catch (error) {
+    waitlistMessage.textContent = "Something went wrong. Please try again.";
+  } finally {
+    submitButton.disabled = false;
+  }
 });
 
 document.addEventListener("keydown", (event) => {

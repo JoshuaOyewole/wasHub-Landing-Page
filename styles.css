@@ -1122,6 +1122,12 @@ svg {
   font-size: 1.5rem;
 }
 
+.waitlist-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .waitlist-message {
   min-height: 2rem;
   margin: 0;

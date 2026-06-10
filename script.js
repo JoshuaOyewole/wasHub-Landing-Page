@@ -12,7 +12,7 @@ const waitlistTriggers = document.querySelectorAll(".js-waitlist-trigger");
 const waitlistCloseControls = document.querySelectorAll("[data-close-waitlist]");
 const waitlistForm = document.querySelector(".waitlist-form");
 const waitlistMessage = document.querySelector(".waitlist-message");
-const waitlistEndpoint = "https://washub-backend.vercel.app/api/waitlist";
+const waitlistEndpoint = "https://api.washub.ng/api/waitlist";
 let lastFocusedElement = null;
 
 function setMenu(open) {

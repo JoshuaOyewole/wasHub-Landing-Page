@@ -956,6 +956,11 @@ svg {
   margin: 0;
 }
 
+.bottom-center{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
 .footer-bottom div {
   display: flex;
   gap: 34px;

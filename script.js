@@ -9,7 +9,9 @@ const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-menu a");
 const waitlistModal = document.getElementById("waitlist-modal");
 const waitlistTriggers = document.querySelectorAll(".js-waitlist-trigger");
-const waitlistCloseControls = document.querySelectorAll("[data-close-waitlist]");
+const waitlistCloseControls = document.querySelectorAll(
+  "[data-close-waitlist]",
+);
 const waitlistForm = document.querySelector(".waitlist-form");
 const waitlistMessage = document.querySelector(".waitlist-message");
 const waitlistEndpoint = "https://api.washub.ng/api/waitlist";
@@ -65,7 +67,8 @@ waitlistForm?.addEventListener("submit", async (event) => {
 
   const invalidField = waitlistForm.querySelector(":invalid");
   if (invalidField) {
-    waitlistMessage.textContent = "Please complete all fields before joining the waitlist.";
+    waitlistMessage.textContent =
+      "Please complete all fields before joining the waitlist.";
     invalidField.focus();
     return;
   }
@@ -91,14 +94,17 @@ waitlistForm?.addEventListener("submit", async (event) => {
       body: JSON.stringify(payload),
     });
 
+    const res = await response.json();
+ 
     if (!response.ok) {
-      throw new Error("Waitlist request failed.");
+      throw new Error(res.error);
     }
 
-    waitlistMessage.textContent = "Thanks, you are on the WashHub waitlist.";
+    waitlistMessage.textContent = res.message || "Successfully joined the waitlist!";
     waitlistForm.reset();
   } catch (error) {
-    waitlistMessage.textContent = "Something went wrong. Please try again.";
+    console.log("Waitlist submission error:", error);
+    waitlistMessage.textContent = error || "Something went wrong. Please try again.";
   } finally {
     submitButton.disabled = false;
   }

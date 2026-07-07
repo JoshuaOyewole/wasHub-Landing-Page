@@ -40,6 +40,40 @@ body.menu-open {
   overflow: hidden;
 }
 
+.d-col {
+  flex-direction: column;
+}
+.d-flex {
+  display: flex;
+}
+.social-link-container{
+  display: flex;
+  column-gap: 2.4rem;
+  justify-content: center;
+  margin-bottom: 5.4rem;
+}
+.social-link-box {
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color:#f3f3f3;
+  border-radius: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.social-link-box:hover{
+  background-color: var(--orange);
+}
+.social-logo {
+  width: 2rem;
+  height: 2rem;
+}
+.justify-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body.modal-open {
   overflow: hidden;
 }
@@ -232,8 +266,7 @@ select {
       rgba(255, 121, 0, 0.13),
       transparent 35%
     ),
-   linear-gradient(136.23deg, #F2F2F2 124.21%, #F2F2F2 124.21%);
-
+    linear-gradient(136.23deg, #f2f2f2 124.21%, #f2f2f2 124.21%);
 }
 
 .hero-grid {
@@ -916,7 +949,7 @@ svg {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4.2rem;
-  margin-bottom: 8.4rem;
+  margin-bottom: 5.4rem;
   text-align: center;
 }
 
@@ -957,9 +990,9 @@ svg {
   margin: 0;
 }
 
-.bottom-center{
-  display:flex;
-  justify-content:center;
+.bottom-center {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 .footer-bottom div {
@@ -978,7 +1011,11 @@ svg {
 .legal-hero {
   padding: 10rem 0 8rem;
   background:
-    radial-gradient(circle at 82% 18%, rgba(247, 124, 11, 0.14), transparent 34%),
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(247, 124, 11, 0.14),
+      transparent 34%
+    ),
     linear-gradient(108deg, #f8f8f8 0 48%, #f1e4d8 100%);
 }
 
@@ -1232,7 +1269,8 @@ svg {
 
 .waitlist-type input:checked + i {
   background:
-    linear-gradient(var(--orange), var(--orange)) center / 1.2rem 1.2rem no-repeat,
+    linear-gradient(var(--orange), var(--orange)) center / 1.2rem 1.2rem
+      no-repeat,
     transparent;
 }
 
@@ -1457,17 +1495,17 @@ svg {
   .hero-copy {
     text-align: left;
   }
-.hero-copy h1 {
-  font-weight: 800;
+  .hero-copy h1 {
+    font-weight: 800;
   }
   .hero-copy p {
     margin: 20px 0 28px;
     font-size: 1.9rem;
     line-height: 1.6;
   }
-.feature-copy > p {
-    max-width: auto
-}
+  .feature-copy > p {
+    max-width: auto;
+  }
   .hero-visual {
     min-height: 480px;
     transform: scale(0.82);
@@ -1476,7 +1514,7 @@ svg {
     max-width: 122vw;
     margin-left: 50%;
     translate: -50% 0;
-    display:none;
+    display: none;
   }
 
   .phone-hero {
@@ -1513,7 +1551,7 @@ svg {
     min-height: 430px;
     /* transform: scale(0.8); */
     transform-origin: top center;
-/*     width: 550px;
+    /*     width: 550px;
     max-width: 124vw;
     margin-left: 50%;
     translate: -50% 0; */
@@ -1557,7 +1595,7 @@ svg {
   .footer-contact {
     margin-bottom: 48px;
   }
-  .hero{
+  .hero {
     min-height: 90vh;
   }
 
@@ -1626,7 +1664,6 @@ svg {
   }
 
   .waitlist-type {
-   
   }
 
   .waitlist-type label {
